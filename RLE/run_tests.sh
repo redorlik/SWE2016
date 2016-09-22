@@ -1,9 +1,10 @@
 
-/usr/local/bin/python -mpip install -U pip
-/usr/local/bin/python -mpip install -U virtualenv 
+export PATH=/usr/local/bin:$PATH
+python -mpip install -U pip
+python -mpip install -U virtualenv 
 
 
-/usr/local/bin/virtualenv testvenv
+virtualenv testvenv
 
 . testvenv/bin/activate
 

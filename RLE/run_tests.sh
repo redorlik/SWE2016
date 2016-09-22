@@ -1,7 +1,8 @@
 
-which python
+python -mpip install -U pip
+python -mpip install -U virtualenv 
 
-python -mpip install -r requirements.txt
+python -mpip install -r RLE/requirements.txt
 
 virtualenv testvenv
 

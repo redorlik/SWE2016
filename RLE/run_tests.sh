@@ -1,5 +1,7 @@
 
-pip install -r requirements.txt
+which python
+
+python -mpip install -r requirements.txt
 
 virtualenv testvenv
 

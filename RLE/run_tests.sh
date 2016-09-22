@@ -5,7 +5,7 @@
 
 /usr/local/bin/virtualenv testvenv
 
-. testenv/bin/activate
+. testvenv/bin/activate
 
 python -mpip install -r RLE/requirements.txt
 pytest RLE

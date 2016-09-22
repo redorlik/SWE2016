@@ -3,7 +3,7 @@
 /usr/local/bin/python -mpip install -U virtualenv 
 
 
-/usr/local/bin/python/virtualenv testvenv
+/usr/local/bin/virtualenv testvenv
 
 . testenv/bin/activate
 

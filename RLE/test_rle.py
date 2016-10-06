@@ -1,6 +1,6 @@
-from rle import rle_encoder,rle_decoder
+from rle import rle_encoder,rle_decoder,serialize_int,deserialize_int
 from hypothesis import given
-from hypothesis.strategies import text
+from hypothesis.strategies import text,integers
 
 def test_simple_encode():
     assert rle_encoder('aa') == [(2,'a')]
@@ -35,6 +35,16 @@ def test_decoder_space():
     assert rle_decoder([(10,'3')]) == '3333333333'
     assert rle_decoder([(1,'0')]) == '0'
     assert rle_decoder([(1,'0'),(1,'1')]) == '01'
+
+def test_serial_int():
+    assert serialize_int(5) == '\x015'
+
+def test_deserial_int():
+    assert deserialize_int('\x015') == 5
+
+@given(integers())
+def test_serilise_deserial_int(num):
+    assert deserialize_int(serialize_int(num)) == num
 
 @given(text())
 def test_encode_decode(input):

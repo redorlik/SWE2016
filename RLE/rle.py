@@ -5,9 +5,7 @@
 #
 
 def rle_encoder(message):
-    if not message:
-        return message
-
+    
     old = message[0]
     count = 1
     result = []
@@ -23,9 +21,15 @@ def rle_encoder(message):
     return result
 
 def rle_decoder(code):
+    result = ''
+    for count,ch in code:
+        result = result + count*ch
+    return result
 
-    result = [count*ch for count,ch in code]
-    return ''.join(result)
+def rle_decoder_join(code):
+    #result = [count*ch for count,ch in code]
+    #result = ''.join([count*ch for count,ch in code])
+    return ''.join([count*ch for count,ch in code])
 
 def deserialize_int(mess):
     cnt = ord(mess[0])
@@ -42,8 +46,15 @@ def serialize(encoded):
 
 
 if __name__ == '__main__':
-    import sys
-    a = rle_encoder(sys.argv[1])
-    #print a
+    import sys,time
+    #a = sys.argv[1]
+    test_data = 50000*[(12000,'f'),(14000,'g')]
+    #print test_data
     #import pdb;pdb.set_trace()
-    print rle_decoder(a)
+    start = time.time()
+    res1 = rle_decoder_join(test_data)
+    stop = time.time()
+    time_for = stop - start
+    res2 = rle_decoder(test_data)
+    time_join = time.time() - stop
+    print u"Tid for 'for'", time_for, "tid for 'join'",time_join,res1==res2
